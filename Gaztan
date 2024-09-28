@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire Headshot</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #gameArea {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+        #enemyHead {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+        }
+        #gun {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Free Fire Headshot Practice</h1>
+    <div id="gameArea">
+        <img src="https://i.ibb.co/ykhxkLs/freefire-head.png" id="enemyHead" alt="Enemy Head">
+        <img src="https://i.ibb.co/3rLmpyS/freefire-gun.png" id="gun" alt="Gun">
+    </div>
+
+    <script>
+        // Fonction pour déplacer rapidement la souris vers la tête et fixer le curseur
+        async function moveMouseToHead() {
+            let head = document.getElementById("enemyHead");
+            let gun = document.getElementById("gun");
+            head.style.top = Math.random() * 200 + 'px';  // Simuler un mouvement aléatoire de la tête
+            head.style.left = Math.random() * 80 + '%';   // Déplacement horizontal aléatoire
+            gun.style.transform = `translateX(-50%)`;     // Simuler le tir
+        }
+
+        // Simuler la détection de l'ennemi et tirer sur la tête
+        async function onEnemyVisible() {
+            console.log("Ennemi détecté !");
+            await moveMouseToHead();
+        }
+
+        // Simuler la détection automatique après 2 secondes
+        setTimeout(onEnemyVisible, 2000);
+    </script>
+</body>
+</html>
